@@ -8,6 +8,14 @@
 - 最初由Linus Torvalds在2005年设计开发
 
 
+- Centralized Version Control Systems
+![Centralized Version Control Systems](huawei-basic-tools/centralized-version-control-systems.png)
+
+
+- Distributed Version Control Systems
+![Distributed Version Control Systems](huawei-basic-tools/distributed-version-control-systems.png)
+
+
 ### Why Git
 
 - 几乎所有操作都在本地
@@ -36,6 +44,8 @@ http://msysgit.github.io/
  - `$ git init`
  - `$ git clone`
 
+Note: 一边演示一边操作
+
 
 - 跟踪新文件
  - `$ git add`
@@ -55,6 +65,8 @@ http://msysgit.github.io/
  - 已暂存（staged）
 ![areas](huawei-basic-tools/areas.png)
 
+Note: 介绍三个区域及其流转顺序，在这个过程中对应的状态
+
 
 - 提交更新
  - `$ git commit`
@@ -67,7 +79,8 @@ http://msysgit.github.io/
 
 ### Exercise git basics
 
-- `$ git init`
+- Fork http://vagrant-ubuntu-trusty-64/do77/basic-tools
+- `$ git clone`
 - `$ git add`
 - `$ git status`
 - `$ git commit`
@@ -88,6 +101,8 @@ http://msysgit.github.io/
 - `$ git pull`
 - `$ git push`
 
+Note: git pull = git fetch + git merge
+
 
 ### branch
 
@@ -98,18 +113,28 @@ http://msysgit.github.io/
 - `$ git checkout iss53`
 - `$ git branch`
 
+Note: 如何创建一个分支
+
 
 ### merge
 
+![basic-merging-2](huawei-basic-tools/basic-merging-2.png)
+
+
 - `$ git checkout master`
 - `$ git merge iss53`
-![basic-merging-2](huawei-basic-tools/basic-merging-2.png)
 
 
 - `$ git branch -d iss53`
 
 
-### Exercise git branch
+### git-svn
+
+- `$ git svn clone http://svn.example.com/project/trunk`
+- `$ git svn rebase`
+- `$ git svn dcommit`
+
+Note: 可以用git操作svn仓库
 
 
 
@@ -118,13 +143,24 @@ http://msysgit.github.io/
 一个利用 Ruby on Rails 开发的开源应用程序，实现一个自托管的Git项目仓库，可通过Web界面进行访问公开的或者私人项目。
 
 
-### CodeClub
+### Code Club
+![]()
 
 
 ### Merge/pull requests
 
+- fork
+- clone
+- commit
+- push
+- merge request
 
-### Exercise fork
+Note: 动手演示
+
+
+### Exercise Merge Requests
+
+Note: 练习Merge Request，把刚才演示自己做一遍。改动内容是把自己和pair的邮箱作为文件名。
 
 
 
@@ -135,20 +171,6 @@ http://msysgit.github.io/
 - <https://www.jetbrains.com/idea/>
 
 
-### Why IntelliJ IDEA
-- Write Better Code
-
-![write better code](huawei-basic-tools/write-better-code.gif)
-
-
-- Be More Productive
-![be more productive](huawei-basic-tools/be-more-productive.gif)
-
-
-- Start Up in No Time
-![start up in no time](huawei-basic-tools/start-up-in-no-time.png)
-
-
 
 ## Maven
 
@@ -157,12 +179,87 @@ http://msysgit.github.io/
 - XML
 
 
+- pom.xml
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.huawei</groupId>
+  <artifactId>basic-tools</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>3.2.4.RELEASE</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>tomcat-maven-plugin</artifactId>
+        <version>1.1</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+Note: XML的配置还是比较长的
+
+
 
 ## Gradle
 
-- 2012年发布
+- 2007年发布
 - DSL Groovy
 - Android
+
+
+- build.gradle
+
+```
+apply plugin: 'java'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+```
+
+
+- build.gradle
+
+```
+apply plugin: 'jetty’
+apply plugin: 'findbugs'
+apply plugin: 'jacoco'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+dependencies {
+    compile "org.springframework:spring-web:3.2.4.RELEASE”
+}
+
+findbugs {
+    ignoreFailures = true
+    excludeFilter = file("myExcludeFilter.xml")
+}
+
+test {
+    jacoco {
+        excludes = ['*_javassist_*']
+    }
+}
+```
+
+Note: 采用DSL后配置明显简介了
 
 
 
@@ -220,8 +317,17 @@ object Hi {
 `$ sbt run`
 
 
-## Exercise sbt and IntelliJ IDEA
+### Exercise sbt and IntelliJ IDEA
 
 - build.sbt
 - Hi.scala
 - IntelliJ IDEA import
+
+
+
+
+## 课后练习
+
+https://github.com/numbbbbb/progit-zh-pdf-epub-mobi
+
+阅读前3章，下次培训时为大家讲解rebase操作。
