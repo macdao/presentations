@@ -9,10 +9,12 @@
 
 
 - Centralized Version Control Systems
+
 ![Centralized Version Control Systems](huawei-basic-tools/centralized-version-control-systems.png)
 
 
 - Distributed Version Control Systems
+
 ![Distributed Version Control Systems](huawei-basic-tools/distributed-version-control-systems.png)
 
 
@@ -63,6 +65,7 @@ Note: 一边演示一边操作
  - 已提交（committed）
  - 已修改（modified）
  - 已暂存（staged）
+
 ![areas](huawei-basic-tools/areas.png)
 
 Note: 介绍三个区域及其流转顺序，在这个过程中对应的状态
@@ -144,7 +147,7 @@ Note: 可以用git操作svn仓库
 
 
 ### Code Club
-![]()
+![Code Club](huawei-basic-tools/code-club.png)
 
 
 ### Merge/pull requests
