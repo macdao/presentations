@@ -172,6 +172,7 @@ Note: 练习Merge Request，把刚才演示自己做一遍。改动内容是把�
 ### IntelliJ IDEA
 
 - <https://www.jetbrains.com/idea/>
+- bin/idea.exe.vmoptions `-Xmx1024m`
 
 
 
