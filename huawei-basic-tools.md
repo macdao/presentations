@@ -82,7 +82,7 @@ Note: 介绍三个区域及其流转顺序，在这个过程中对应的状态
 
 ### Exercise git basics
 
-- Fork http://vagrant-ubuntu-trusty-64/do77/basic-tools
+- Fork http://code.huawei.com/qixi/prs-capability.git
 - `$ git clone`
 - `$ git add`
 - `$ git status`
