@@ -335,8 +335,27 @@ object Hi {
 ### Exercise sbt and IntelliJ IDEA
 
 - build.sbt
-- Hi.scala
-- IntelliJ IDEA import
+
+```scala
+lazy val root = (project in file(".")).
+  settings(
+    name := "hello",
+    version := "1.0",
+    scalaVersion := "2.11.4"
+  )
+```
+
+- src/main/scala/Hi.scala
+
+```scala
+object Hi {
+  def main(args: Array[String]) = println("Hi!")
+}
+```
+
+- `sbt run`
+
+- IntelliJ IDEA Import Project
 
 
 
