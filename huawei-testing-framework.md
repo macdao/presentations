@@ -1,6 +1,5 @@
-# 上节课后练习
+# 上节课后练习 rebase
 
-## rebase
 
 ![basic-rebase-1](huawei-testing-framework/basic-rebase-1.png)
 
