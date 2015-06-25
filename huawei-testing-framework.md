@@ -147,8 +147,9 @@ test2
 - 当三个特殊数是3、5、7时，学生7说Whizz
 
 
-`$ git remote add upstream git@code.huawei.com:qixi/prs-capability.git`
-`$ git pull upstream master`
+- `$ git remote add upstream http://code.huawei.com/qixi/prs-capability.git`
+- `$ git fetch upstream master`
+- `$ git checkout -b 2-testing-framework upstream/master`
 
 
 ### Expected Exceptions
