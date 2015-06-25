@@ -1,3 +1,33 @@
+# 上节课后练习
+
+## rebase
+
+![basic-rebase-1](huawei-testing-framework/basic-rebase-1.png)
+
+
+![basic-rebase-2](huawei-testing-framework/basic-rebase-2.png)
+
+
+![basic-rebase-3](huawei-testing-framework/basic-rebase-3.png)
+
+
+![basic-rebase-4](huawei-testing-framework/basic-rebase-4.png)
+
+
+### 好处
+
+![interesting-rebase-1](huawei-testing-framework/interesting-rebase-1.png)
+
+
+![interesting-rebase-5](huawei-testing-framework/interesting-rebase-5.png)
+
+
+### 风险
+
+> 一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。
+
+
+
 # Testing Framework
 
 
