@@ -4,6 +4,7 @@
 
 ## JUnit
 
+- http://junit.org/
 - 是一个简单的框架，用来编写可重复运行的测试
 - 用于单元测试
 - 遵循xUnit架构
@@ -133,7 +134,7 @@ test2
 
 1. 你首先说出三个不同的特殊数，要求必须是个位数，比如3、5、7。
 2. 让所有学生拍成一队，然后按顺序报数。
-3. 学生报数时，
+3. 学生报数时：
   - 如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；
   - 如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；
   - 如果所报数字是第三个特殊数（7）的倍数，那么要说Whizz。
@@ -152,10 +153,23 @@ test2
 - `$ git checkout -b 2-testing-framework upstream/master`
 
 
+- .gitignore
+
+```
+# idea project directory
+.idea/
+target
+# will match my.o and my.a
+*.[oa]
+# will match hello and hellp but not hellop
+hell?
+```
+
+
 ### Expected Exceptions
 
 ```java
-@Test(expected= IndexOutOfBoundsException.class)
+@Test(expected = IndexOutOfBoundsException.class)
 public void empty() {
      new ArrayList<Object>().get(0);
 }
@@ -382,8 +396,13 @@ None should (equal (Some(List(1, 2, 3))) or be (None))
 
 ## Some(SSH keys)
 
+- http://code.huawei.com/qixi/prs-capability.git
+- git@code.huawei.com:qixi/prs-capability.git
+
+
 - `$ ssh-keygen -t rsa -C "qixi@huawei.com"`
 - `$ clip < ~/.ssh/id_rsa.pub`
+- Add SSH Key on Code Club
 
 
 
@@ -409,7 +428,7 @@ lazy val root = (project in file(".")).
 
 - 需求
 
- 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如第一个特殊数和第二个特殊数的倍数，那么不能说该数字，而是要说FizzBuzz, 以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
+ 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如第一个特殊数和第二个特殊数的倍数，那么不能说该数字，而是要说FizzBuzz，以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
 
 - 有FizzGame和Student的测试和实现
 - 提交到Code Club上并发Merge Request
