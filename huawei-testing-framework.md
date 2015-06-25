@@ -35,9 +35,8 @@
 ## JUnit
 
 - http://junit.org/
-- 是一个简单的框架，用来编写可重复运行的测试
-- 用于单元测试
-- 遵循xUnit架构
+- 是一个Java单元测试框架
+- A research survey performed in 2013 across 10,000 GitHub projects found that JUnit, along with slf4j-api, are the most popular libraries. Each library was used by 30.7% of projects.
 
 
 ### Create a test
@@ -74,6 +73,8 @@ java.lang.AssertionError
 assertThat([value], [matcher statement]);
 ```
 
+Note: Joe Walnes built a new assertion mechanism on top of what was then JMock 1
+
 
 ```java
 import org.junit.Test;
@@ -102,14 +103,25 @@ Expected: is <true>
 
 ```java
 assertThat("good", is("good"));
+
 assertThat(new Object(), notNullValue());
-assertThat("good", startsWith("goo"));
-assertThat(Arrays.asList(1, 2), hasItem(1));
-assertThat("fab", both(containsString("a")).and(containsString("b")));
-assertThat("good", not(allOf(equalTo("bad"), equalTo("good"))));
-assertThat("good", anyOf(equalTo("bad"), equalTo("good")));
-assertThat(7, not(either(equalTo(3)).or(equalTo(4))));
+
 assertThat(new Object(), not(sameInstance(new Object())));
+
+assertThat("good", startsWith("goo"));
+
+assertThat(Arrays.asList(1, 2), hasItem(1));
+```
+
+
+```java
+assertThat("fab", both(containsString("a")).and(containsString("b")));
+
+assertThat("good", not(allOf(equalTo("bad"), equalTo("good"))));
+
+assertThat("good", anyOf(equalTo("bad"), equalTo("good")));
+
+assertThat(7, not(either(equalTo(3)).or(equalTo(4))));
 ```
 
 
@@ -183,17 +195,8 @@ test2
 - `$ git checkout -b 2-testing-framework upstream/master`
 
 
-- .gitignore
-
-```
-# idea project directory
-.idea/
-target
-# will match my.o and my.a
-*.[oa]
-# will match hello and hellp but not hellop
-hell?
-```
+- `$ sbt -mem 500`
+- `> ~test`
 
 
 ### Expected Exceptions
@@ -388,26 +391,39 @@ class StudentSpec extends path.FunSpec with Matchers
 
 
 ```scala
-Array(1, 2) should equal(Array(1, 2))
+Array(1, 2) should equal (Array(1, 2))
+
 val array: Array[Int] = Array(1, 2); array should be theSameInstanceAs array
+
 None should be (None)
+
 "abc" should have length 3
-"Hello seven world" should startWith("Hello")
-"Hello seven world" should endWith("world")
-"Hello seven world" should include("seven")
+
+"Hello seven world" should startWith ("Hello")
+
+"Hello seven world" should include ("seven")
+
 "Hello seven world" should startWith regex "Hel*o"
+
 1 should be < 7
 ```
 
 
 ```scala
 new File(".") shouldBe 'directory
+
 new File(".") should be a 'directory
-new File(".") should not be a('file)
+
+new File(".") should not be a ('file)
+
 "" shouldBe 'empty
+
 "" shouldBe empty
+
 all (Array(1,2,3)) should be < 10
+
 5 should (be > 0 and be <= 10)
+
 None should (equal (Some(List(1, 2, 3))) or be (None))
 ```
 
@@ -450,6 +466,20 @@ lazy val root = (project in file(".")).
     libraryDependencies += "commons-io" % "commons-io" % "2.0" % "test" force(),
     crossPaths := false
   )
+```
+
+
+
+## Some(.gitignore)
+
+```
+# idea project directory
+.idea/
+target
+# will match my.o and my.a
+*.[oa]
+# will match hello and hellp but not hellop
+hell?
 ```
 
 
