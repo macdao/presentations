@@ -127,11 +127,16 @@ test2
 
 ### Exercise 1
 
-你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有100名学生在上课。游戏的规则是：
+你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。
+
+此时有100名学生在上课。游戏的规则是：
 
 1. 你首先说出三个不同的特殊数，要求必须是个位数，比如3、5、7。
 2. 让所有学生拍成一队，然后按顺序报数。
-3. 学生报数时，如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；如果所报数字是第三个特殊数（7）的倍数，那么要说Whizz。
+3. 学生报数时，
+  - 如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；
+  - 如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；
+  - 如果所报数字是第三个特殊数（7）的倍数，那么要说Whizz。
 
 
 编写Student的测试
@@ -140,6 +145,10 @@ test2
 - 当三个特殊数是3、5、7时，学生3说Fizz
 - 当三个特殊数是3、5、7时，学生5说Buzz
 - 当三个特殊数是3、5、7时，学生7说Whizz
+
+
+`$ git remote add upstream git@code.huawei.com:qixi/prs-capability.git`
+`$ git pull upstream master`
 
 
 ### Expected Exceptions
@@ -213,7 +222,71 @@ public void MyTest {
 - 可以测试Java和Scala
 
 
+### FunSuite
+
+```scala
+import org.scalatest.FunSuite
+
+class SetSuite extends FunSuite {
+
+  test("An empty Set should have size 0") {
+    assert(Set.empty.size == 0)
+  }
+
+  test("Invoking head on an empty Set should produce NoSuchElementException") {
+    intercept[NoSuchElementException] {
+      Set.empty.head
+    }
+  }
+}
+```
+
+
+### FlatSpec
+
+```scala
+import org.scalatest.FlatSpec
+
+class SetSpec extends FlatSpec {
+
+  "An empty Set" should "have size 0" in {
+    assert(Set.empty.size == 0)
+  }
+
+  it should "produce NoSuchElementException when head is invoked" in {
+    intercept[NoSuchElementException] {
+      Set.empty.head
+    }
+  }
+}
+```
+
+
 ### FunSpec
+
+```scala
+import org.scalatest.FunSpec
+
+class SetSpec extends FunSpec {
+
+  describe("A Set") {
+    describe("when empty") {
+      it("should have size 0") {
+        assert(Set.empty.size == 0)
+      }
+
+      it("should produce NoSuchElementException when head is invoked") {
+        intercept[NoSuchElementException] {
+          Set.empty.head
+        }
+      }
+    }
+  }
+}
+```
+
+
+### path.FunSpec
 
 ```scala
 import org.scalatest.path
@@ -244,6 +317,8 @@ val left = 2
 val right = 1
 assert(left == right)
 ```
+
+
 ```scala
 val a = 5
 val b = 2
@@ -253,23 +328,42 @@ assertResult(2) {
 ```
 
 
+```scala
+intercept[IndexOutOfBoundsException] {
+  "hi".charAt(-1)
+}
+```
+
+
 ### Using matchers
 
 ```scala
+class StudentSpec extends path.FunSpec with Matchers
+```
+
+
+```scala
 Array(1, 2) should equal(Array(1, 2))
+val array: Array[Int] = Array(1, 2); array should be theSameInstanceAs array
+None should be (None)
 "abc" should have length 3
 "Hello seven world" should startWith("Hello")
 "Hello seven world" should endWith("world")
 "Hello seven world" should include("seven")
 "Hello seven world" should startWith regex "Hel*o"
 1 should be < 7
+```
+
+
+```scala
 new File(".") shouldBe 'directory
 new File(".") should be a 'directory
 new File(".") should not be a('file)
 "" shouldBe 'empty
 "" shouldBe empty
-val array: Array[Int] = Array(1, 2); array should be theSameInstanceAs array
 all (Array(1,2,3)) should be < 10
+5 should (be > 0 and be <= 10)
+None should (equal (Some(List(1, 2, 3))) or be (None))
 ```
 
 
@@ -282,3 +376,39 @@ all (Array(1,2,3)) should be < 10
 - 当三个特殊数是4、5、6时，学生1说1
 - 当三个特殊数是4、5、6时，学生3说3
 - 当三个特殊数是4、5、6时，学生4说Fizz
+
+
+
+## Some(SSH keys)
+
+- `$ ssh-keygen -t rsa -C "qixi@huawei.com"`
+- `$ clip < ~/.ssh/id_rsa.pub`
+
+
+
+## Some(build.sbt)
+
+```scala
+lazy val root = (project in file(".")).
+  settings(
+    name := "hello",
+    version := "1.0",
+    scalaVersion := "2.11.4",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "com.github.stefanbirkner" % "system-rules" % "1.11.0" % "test",
+    libraryDependencies += "commons-io" % "commons-io" % "2.0" % "test" force(),
+    crossPaths := false
+  )
+```
+
+
+
+## 课后练习
+
+- 需求
+
+ 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如第一个特殊数和第二个特殊数的倍数，那么不能说该数字，而是要说FizzBuzz, 以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
+
+- 有FizzGame和Student的测试和实现
+- 提交到Code Club上并发Merge Request
