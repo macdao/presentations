@@ -198,6 +198,20 @@ test2
 - `> ~test`
 
 
+### IntelliJ IDEA 快捷键
+
+Key                  | Description
+-------------------- | -----------
+`Alt + Enter`        | Quick fixes
+`Ctrl + Shift + T`   | Create new test/go to test
+`Alt + Insert`       | Generate test
+`Ctrl + Alt + V`     | Extract variable
+`Ctrl + Alt + F`     | Extract field
+`Ctrl + Shift + F10` | Run test
+
+http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf
+
+
 ### Expected Exceptions
 
 ```java
