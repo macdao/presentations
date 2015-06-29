@@ -72,15 +72,6 @@ public Student(FizzGame fizzGame, int index) {
 Note: 违反了依赖反转原则
 
 
-```java
-public Student(List<GameRule> rules, int index) {
-    this.rules = rules;
-    this.index = index;
-}
-```
-
-
-
 <!-- .slide: data-background="white" -->
 
 ## 控制反转 Inversion of Control
@@ -100,6 +91,27 @@ Figure 1 shows the dependencies for this situation. The MovieLister class is dep
 ### IoC
 
 The main control of the program was inverted, moved away from you to the framework.
+
+
+## Exercise 1
+
+```java
+public Student(List<GameRule> rules, int index) {
+    this.rules = rules;
+    this.index = index;
+}
+```
+- 所有测试都要通过
+
+
+### IntelliJ IDEA 快捷键
+
+Key                  | Description
+-------------------- | -----------
+`Ctrl + Alt + P`     | Extract parameter
+`Ctrl + F6`          | Change method signature
+
+http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf
 
 
 
@@ -166,7 +178,7 @@ public void say_fizz_when_first_rule_return_fizz() throws Exception {
 ```
 
 
-## Exercise 1
+## Exercise 2
 
 实现Case 2
 
@@ -251,7 +263,7 @@ mockedList.add("twice");
 mockedList.add("three times");
 mockedList.add("three times");
 mockedList.add("three times");
- 
+
 verify(mockedList, times(2)).add("twice");
 
 verify(mockedList, never()).add("never happened");
@@ -261,7 +273,7 @@ verify(mockedList, atMost(5)).add("three times");
 ```
 
 
-## Exercise 2
+## Exercise 3
 
 - 把StudentTest用Mockito改写
 
