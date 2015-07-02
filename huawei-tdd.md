@@ -1,3 +1,29 @@
+# Homework Review
+
+## 获取基础代码
+
+- `$ git fetch upstream master`
+- `$ git checkout -b 3-mock upstream/master`
+
+
+<!-- .slide: data-background="white" -->
+
+![Merge Requet](huawei-tdd/merge-request.png)
+
+Note: http://yuml.me/diagram/scruffy/class/%5BC3%5D-%3E%5BC2%5D,%5BC2%5D-%3E%5BC1%5D,%5BC2-exercise%5D-%3E%5BC2%5D,%5BC2-homework%5D-%3E%5BC2-exercise%5D,%5BC2-homework%5D%5E-%5B2-testing-framework%5D,%5BC3-exercise%5D-%3E%5BC3%5D,%5BC3-homework%5D-%3E%5BC3-exercise%5D,%5BC3-homework%5D%5E-%5B3-mock%5D
+
+
+## push.default
+
+- matching
+- simple
+
+
+- `$ git config --global push.default simple`
+- `$ git push --set-upstream origin your-branch-name`
+
+
+
 # Test-driven development (TDD)
 
 
