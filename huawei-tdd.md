@@ -51,7 +51,8 @@
 
 
 ## 动机是什么？
-TDD是一种可以在开发过程中控制忧虑感的开发方法
+
+TDD是一种可以在开发过程中控制忧虑感的开发方法
 
 
 ### 担忧的负面影响
@@ -187,6 +188,7 @@ Note: 是不是一定要TDD、一定要测试先行？
  - it should print `invalid input` in stderr (using System Rules)
  - it should return 1 `System.exit(1)` (using System Rules)
 - 其他情况
+
 
 
 # 参考资料
