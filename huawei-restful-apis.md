@@ -242,7 +242,7 @@ REST组件通过转移一种表述来进行通信，REST组件可以基于接收
 
 - 区分非权威的响应
 - Cookie
-- 必需扩展
+- 强制性扩展
 - 混合元数据
 - MIME语法
 
@@ -557,7 +557,7 @@ Content-Type: application/json+userdb
         {
             "id": 1,
             "name": "Emil",
-            "country: "Sweden",
+            "country": "Sweden",
             "links": [
                 {
                     "href": "/user/1",
@@ -579,7 +579,7 @@ Content-Type: application/json+userdb
         {
             "id": 2,
             "name": "Adam",
-            "country: "Scotland",
+            "country": "Scotland",
             "links": [
                 {
                     "href": "/user/2",
@@ -727,7 +727,7 @@ Content-Type: application/json+userdb
 
 - 包括内容：
 
- - 每个API的请求和响应，包括请求和响应的HTTP头和体
+ - 每个API的请求和响应，包括HTTP头和体
  - 考虑到异常情况
 
 
