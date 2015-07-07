@@ -723,6 +723,7 @@ Content-Type: application/json+userdb
 
 - 实现以下功能：
 
+ - 可以显示游戏列表
  - 可以创建一个游戏，创建时指定三个特殊数
 
 - 包括内容：
@@ -745,12 +746,12 @@ Content-Type: application/vnd.qixi.fizz+json
 {
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "list",
       "method": "GET"
     },
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "create",
       "method": "POST"
     }
@@ -760,7 +761,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-GET /fizz-game
+GET /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 ```
 
@@ -769,18 +770,18 @@ Accpect: application/vnd.qixi.fizz+json
 Content-Type: application/vnd.qixi.fizz+json
 
 {
-  "games": [
+  "fizzGames": [
     {
       "id": 1,
       "specialNumbers": [3, 5, 7],
       "links": [
         {
-          "href": "/fizz-game/1",
+          "href": "/fizz-games/1",
           "rel": "self",
           "method": "GET"
         },
         {
-          "href": "/fizz-game/1",
+          "href": "/fizz-games/1",
           "rel": "delete",
           "method": "DELETE"
         }
@@ -789,12 +790,12 @@ Content-Type: application/vnd.qixi.fizz+json
   ],
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "self",
       "method": "GET"
     },
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "create",
       "method": "POST"
     }
@@ -804,7 +805,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-POST /fizz-game
+POST /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 
 {
@@ -817,17 +818,17 @@ Accpect: application/vnd.qixi.fizz+json
 Content-Type: application/vnd.qixi.fizz+json
 
 {
-  "game": {
+  "fizzGame": {
     "id": 2,
     "specialNumbers": [4, 5, 6],
     "links": [
       {
-        "href": "/fizz-game/2",
+        "href": "/fizz-games/2",
         "rel": "self",
         "method": "GET"
       },
       {
-        "href": "/fizz-game/2",
+        "href": "/fizz-games/2",
         "rel": "delete",
         "method": "DELETE"
       }
@@ -835,7 +836,7 @@ Content-Type: application/vnd.qixi.fizz+json
   },
   "links": [
     {
-      "href": "/fizz-game",
+      "href": "/fizz-games",
       "rel": "list",
       "method": "GET"
     },
@@ -845,7 +846,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 
 ```
-POST /fizz-game
+POST /fizz-games
 Accpect: application/vnd.qixi.fizz+json
 
 {
@@ -870,6 +871,7 @@ Content-Type: application/vnd.qixi.fizz+json
 
 - 实现以下功能：
 
+ - 可以显示游戏列表
  - 可以创建一个游戏，创建时指定三个特殊数
  - 在游戏中，可以查看某个学生应该说的话
  - 在游戏中，可以验证某个学生应否应该说Fizz
