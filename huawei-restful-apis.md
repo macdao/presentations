@@ -816,6 +816,7 @@ Accpect: application/vnd.qixi.fizz+json
 ```
 201 Created
 Content-Type: application/vnd.qixi.fizz+json
+Location: /fizz-games/2
 
 {
   "fizzGame": {
