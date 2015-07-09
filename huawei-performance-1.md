@@ -84,6 +84,7 @@ Note: `-XX:+PrintCompilation`
 
 ## 性能监控
 
+
 ### 工具
 
 - [JConsole](https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html)
@@ -135,6 +136,7 @@ Windows
 
 ## 性能调优
 
+
 ### 性能优化机会
 
 - 使用更高效的算法
@@ -156,7 +158,9 @@ Windows
 
 # 课后练习
 
-优化FizzGame性能
+- 优化FizzGame性能
+- 包含优化前后对比文档
+- 发Merge Request
 
 
 
