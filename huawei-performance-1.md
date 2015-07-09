@@ -111,7 +111,7 @@ JMC监控
 
 - 更新代码
 - `$ cd 6-performance-1`
-- `$ sbt`
+- `$ sbt -mem 512`
 - `> test:run`
 
 
@@ -128,8 +128,8 @@ Windows
 
 ### Java Flight Recorder
 
-- `$JAVA_OPTS=-XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=60s,filename=myrecording.jfr sbt test:run`
-- `$ JAVA_OPTS=-XX:+UnlockCommercialFeatures -XX:+FlightRecorder sbt`
+- `$ JAVA_OPTS="-XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=120s,delay=10s,filename=myrecording.jfr" sbt test:run -mem 512`
+- `$ JAVA_OPTS="-XX:+UnlockCommercialFeatures -XX:+FlightRecorder" sbt -mem 512`
 
 
 
@@ -139,7 +139,7 @@ Windows
 
 - 使用更高效的算法
 - 减少锁竞争
-- 为算法声称更有效率的代码
+- 为算法生成更有效率的代码
 
 
 - 内核态CPU使用
