@@ -129,7 +129,7 @@ Windows
 
 ### Java Flight Recorder
 
-- `$ JAVA_OPTS="-XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=120s,delay=10s,filename=myrecording.jfr" sbt test:run -mem 512`
+- `$ JAVA_OPTS="-XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=300s,filename=myrecording.jfr" sbt clean test:run -mem 512`
 - `$ JAVA_OPTS="-XX:+UnlockCommercialFeatures -XX:+FlightRecorder" sbt -mem 512`
 
 
@@ -148,6 +148,11 @@ Windows
 - 锁竞争
 - 调整数据结构的大小
 
+
+循环次数 | 线程数 | 改动           | 时间1 | 时间2 | 时间3 | 平均时间
+-------- | ------ | -------------- | ----- | ----- | ----- | --------
+100k     | 4      | 无             | 155   | 136   | 134   | 142
+100k     | 4      | BufferedWriter | 150   | 120   | 125   | 132
 
 
 ## Exercise 2
