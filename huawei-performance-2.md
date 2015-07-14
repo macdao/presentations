@@ -7,8 +7,6 @@
 
 ## HotSpot VM的基本架构
 
-[IMG]
-
 - HotSpot VM运行时
 - 垃圾收集器
 - JIT编译器
@@ -81,12 +79,15 @@ Note: 图有问题
 
 ## Exercise 1
 
+- `$ JAVA_OPTS="-server -XX:+UnlockCommercialFeatures -XX:+FlightRecorder" sbt test:run -mem 512`
 - 修复内存泄漏
 - 优化应用
 
+Note: 重启sbt
 
 
-## JVM性能调优
+
+## JVM性能调优步骤
 
 1. 确定需求
 2. 选择JVM部署模式
@@ -113,15 +114,16 @@ Note: 图有问题
 2. GC内存最大化原则
 3. GC调优的3选2原则：吞吐量、延迟、内存占用
 
+
 ## 设置内存
 
-VM Arguments                | Description
-------------                | -----------
-`-Xms<n>[g|m|k]`            | 堆空间初始值、最小值
-`-Xmx<n>[g|m|k]`            | 堆空间最大值
-`-Xmn<n>[g|m|k]`            | 新生代空间的初始值、最小以及最大值
-`-XX:PermSize=<n>[g|m|k]`    | 永久代空间的初始值、最小值
-`-XX:MaxPermSize=<n>[g|m|k]` | 永久代空间的最大值
+VM Arguments                 | Description
+------------                 | -----------
+`-Xms<n>[g/m/k]`             | 堆空间初始值、最小值
+`-Xmx<n>[g/m/k]`             | 堆空间最大值
+`-Xmn<n>[g/m/k]`             | 新生代空间的初始值、最小以及最大值
+`-XX:PermSize=<n>[g/m/k]`    | 永久代空间的初始值、最小值
+`-XX:MaxPermSize=<n>[g/m/k]` | 永久代空间的最大值
 
 堆空间 = 新生代空间 + 老生代
 
@@ -130,12 +132,14 @@ Note: 最大值和最小值要一致，否则在动态调整时会引起Full GC
 
 ## 初始堆空间大小配置
 
-Space     | Value                         | 举例（老年代30m、永生代87m）
------     | -----                         | ----
-Java Heap | 3-4倍Full GC后老年代空间大小     | 90m-120m
-新生代     | 1-1.5倍Full GC后老年代空间大小   | 30m-45m
-老年代     | 2-3倍Full GC后老年代空间大小     | 60m-90m
-永久代     | 1.2-1.5倍Full GC后永久代空间大小 | 104m-130m
+Space     | Value                            | 举例（老年代17m、永生代58m）
+-----     | -----                            | ---------------------------
+Java Heap | 3-4倍Full GC后老年代空间大小     | 51m-68m
+新生代    | 1-1.5倍Full GC后老年代空间大小   | 17m-25.5m
+老年代    | 2-3倍Full GC后老年代空间大小     | 23m-51m
+永久代    | 1.2-1.5倍Full GC后永久代空间大小 | 43m-54m
+
+`JAVA_OPTS="-Xms51m -Xmx51m -Xmn17m -XX:PermSize=43m -XX:MaxPermSize=43m -server -XX:+UnlockCommercialFeatures -XX:+FlightRecorder" sbt test:run`
 
 
 ## 调优延迟/响应性
@@ -143,6 +147,7 @@ Java Heap | 3-4倍Full GC后老年代空间大小     | 90m-120m
 ### 新生代
 
 - 空间越小，Minor GC时间越短，频率越高
+- 新生代大小和频率成反比
 - 调整新生代大小时同时保持老生代大小不变
 
 
@@ -156,10 +161,23 @@ Java Heap | 3-4倍Full GC后老年代空间大小     | 90m-120m
 
 - 尽可能避免发生Full GC
 - 优化老化频率
-- 提升失败？
+- `-XX:SurvivorRatio=6`
+
+Note: 例子：先降低Minor GC频率（调整新生代），再减少Full GC（调整Survivor）
+
+
+Heap | 新生代 | Eden  | Survivor | SurvivorRatio | 老生代 | 永久代
+---- | ------ | ----  | -------- | ------------- | ------ | ------
+51   | 17     |  13   | 2        | 6             | 34     | 43
+84   | 50     |  37.5 | 6.25     | 6             | 34     | 43
+104  | 70     |  42   | 14       | 3             | 34     | 43
 
 
 ## Exercise 2
+
+- 调优延迟/响应性 - 调整Minor GC时间和频率
+- 调优延迟/响应性 - 调整Full GC时间和频率
+- 调优吞吐量 - 避免发生Full GC
 
 
 
@@ -181,6 +199,10 @@ Java Heap | 3-4倍Full GC后老年代空间大小     | 90m-120m
 
 
 ## 课后练习
+
+找出3个项目代码中性能优化点
+
+- 提交优化数据(Merge Request)
 
 
 
