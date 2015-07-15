@@ -19,12 +19,14 @@
 - 大多数分配对象的存活时间很短
 - 存活时间久的对象很少引用存活时间短的对象
 
+![Typical Distribution for Lifetimes of Objects"](huawei-performance-2/typical-distribution-for-lifetimes-of-objects.png)
+
 
 ### 内存结构
 
 - 堆(Heap)
  - 新生代(Young generation)
- - 老年代(Old generation)
+ - 老年代(Old generation/tenured generation)
 - Non Heap
  - 永久代(Permanent generation) 
 
@@ -45,7 +47,7 @@
 - 新生代
  - Eden
  - 一对Survivor
-- 老生代
+- 老年代
 
 
 ## Minor GC
@@ -125,7 +127,7 @@ VM Arguments                 | Description
 `-XX:PermSize=<n>[g/m/k]`    | 永久代空间的初始值、最小值
 `-XX:MaxPermSize=<n>[g/m/k]` | 永久代空间的最大值
 
-堆空间 = 新生代空间 + 老生代
+堆空间 = 新生代空间 + 老年代
 
 Note: 最大值和最小值要一致，否则在动态调整时会引起Full GC
 
@@ -148,10 +150,10 @@ Java Heap | 3-4倍Full GC后老年代空间大小     | 51m-68m
 
 - 空间越小，Minor GC时间越短，频率越高
 - 新生代大小和频率成反比
-- 调整新生代大小时同时保持老生代大小不变
+- 调整新生代大小时同时保持老年代大小不变
 
 
-### 老生代
+### 老年代
 
 - Full GC引入的最差停滞时间
 - Full GC的频率
@@ -166,7 +168,7 @@ Java Heap | 3-4倍Full GC后老年代空间大小     | 51m-68m
 Note: 例子：先降低Minor GC频率（调整新生代），再减少Full GC（调整Survivor）
 
 
-Heap | 新生代 | Eden  | Survivor | SurvivorRatio | 老生代 | 永久代
+Heap | 新生代 | Eden  | Survivor | SurvivorRatio | 老年代 | 永久代
 ---- | ------ | ----  | -------- | ------------- | ------ | ------
 51   | 17     |  13   | 2        | 6             | 34     | 43
 84   | 50     |  37.5 | 6.25     | 6             | 34     | 43
