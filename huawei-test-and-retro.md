@@ -24,7 +24,6 @@
 ## 要求
 
 - 通过`all student should say correctly`测试
-- 测试代码覆盖率
 - Tasking
 - 小步提交
 - Merge Request
@@ -42,26 +41,28 @@
 
 ### What Went Well?
 
-- “Talking with the customer gave us insights we hadn’t noticed ourselves.”
-- “By seeing what each of us was working on, we avoided some tasks that would have been wasted.”
-- “Our project sponsors were impressed with the presentation.”
+- “跟客户谈话让我们发现我们之前没有注意到的东西”
+- “通过观察团队其他成员在做什么，我们避免了一些重复工作”
+- “老板对我们的演示非常满意”
 
 
 ### What Didn’t Go So Well?
 
-- “We spent a long time making the decision on the ordering process” rather than, “It shouldn’t take us so long to decide the ordering process”.
-- “Two pieces of work were rejected by our customer,” instead of “I wish our customer was more realistic about what we can deliver.”
-- “Our Tuesday meetings are running over time” rather than “We keep getting bogged down in detail during the Tuesday meetings”
+ 关注在真实发生的事情上
+
+- “我们在决定订购流程时花了很长时间” > “决定订购流程不应该占用我们这么长时间”
+- “有两块工作被客户拒绝了” > “我希望我们的客户对于我们可以交付的东西更加现实”
+- “我们周二的会议总是超时” > “我们总是在周二会议上陷入僵局”
 
 
 ### What Still Puzzles Me?
 
-- “Why are we attracting fewer and fewer people to our product demonstrations?”
-- “Why is doing my work taking twice as long as it did last week?”
-- “Where does our product fit into the overall portfolio strategy?”
+- “为什么我们的产品演示吸引的人越来越少了？”
+- “为什么我的工作花了上周两倍的时间？”
+- “我们的产品如何匹配全局的投资组合战略？”
 
 
-## Turning the 4 Questions into Improvements
+## 把问题转换成改进
 
 
 
