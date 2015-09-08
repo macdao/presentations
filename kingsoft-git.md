@@ -179,7 +179,132 @@ deleteData: function( elem, name, callback ) {
 
 
 
+## push
+
+### push.default
+
+- matching
+- simple
+
+
+- `$ git config --global push.default simple`
+- `$ git push --set-upstream origin your-branch-name`
+
+
+
+## stash
+
+
+
+## reset
+
+
+
+## config
+
+
+
+## alias
+
+```
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.unstage 'reset HEAD --'
+```
+
+
+Alias | Command
+----- | -------
+gup   | git pull --rebase
+gba   | git branch -a
+gcm   | git checkout master
+gcmsg | git commit -m
+gco   | git checkout
+gd    | git diff
+gdca  | git diff --cached
+gp    | git push
+grbc  | git rebase --continue
+gst   | git status
+gsta  | git stash
+gwip  | git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"
+
+
+- https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
+- https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
+
+
+
+## Workflows
+
+### Centralized Workflow
+<!-- .slide: data-background="white" -->
+![centralized-1](kingsoft-git/centralized-1.svg)
+
+
+<!-- .slide: data-background="white" -->
+![centralized-2](kingsoft-git/centralized-2.svg)
+
+
+### Feature Branch Workflow
+<!-- .slide: data-background="white" -->
+![feature-branch-1](kingsoft-git/feature-branch-1.svg)
+
+
+<!-- .slide: data-background="white" -->
+![feature-branch-2](kingsoft-git/feature-branch-2.svg)
+
+
+### Gitflow Workflow
+
+- The main branches
+
+![gitflow-1](kingsoft-git/gitflow-1.png)
+
+
+- Supporting branches
+
+ - Feature branches
+ - Release branches
+ - Hotfix branches
+
+
+![gitflow-2](kingsoft-git/gitflow-2.png)
+
+
+![gitflow-3](kingsoft-git/gitflow-3.png)
+
+
+### Feature Branch Review
+
+![feature-branch-review-1](kingsoft-git/feature-branch-review-1.png)
+
+
+![feature-branch-review-2](kingsoft-git/feature-branch-review-2.png)
+
+
+![feature-branch-review-3](kingsoft-git/feature-branch-review-3.png)
+
+
+> Feature Branching is a poor man's modular architecture, instead of building systems with the ability to easy swap in and out features at runtime/deploytime they couple themselves to the source control providing this mechanism through manual merging.
+>
+> -- Dan Bodart
+
+
+
+## git-svn
+
+- `$ git svn clone http://svn.example.com/project/trunk`
+- `$ git svn rebase`
+- `$ git svn dcommit`
+
+
+
 # 参考资料
 
 - https://github.com/numbbbbb/progit-zh-pdf-epub-mobi
+- http://martinfowler.com/bliki/FeatureBranch.html
+- https://www.atlassian.com/git/tutorials/comparing-workflows
+- http://nvie.com/posts/a-successful-git-branching-model/
 
