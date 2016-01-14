@@ -1,0 +1,4 @@
+graph { flow: south; }
+
+( Server [ Reverse Proxy\n(nginx) ], [ Web\n(nginx) ], [ RESTful API\n(JBoss)] )
+[ Browser ] -> [ Reverse Proxy\n(nginx) ] { columns: 3; } -> [ Web\n(nginx) ], [ RESTful API\n(JBoss)]
