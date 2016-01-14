@@ -1,2 +1,2 @@
-( Test Double [ Contract ] )
+( Mock Server [ Contract ] )
 [ Web ] - HTTP -> [ Contract ]
