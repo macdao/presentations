@@ -1,4 +1,4 @@
-# Development based on Contracts
+# Development based on Contract
 
 ## from project `China Merchants Bank - APP Development`
 
@@ -131,6 +131,9 @@ vs.
                 ╎               ╎
                 └−−−−−−−−−−−−−−−┘
 ```
+
+
+### Contract by Example
 
 
 
@@ -512,10 +515,10 @@ hello
 
 ```json
 {
-    "timestamp": "1989-06-04",
+    "timestamp": "612889200000",
     "status": 404,
     "error": "Tiananmen Square protests of 1989",
-    "exception": "macdao.NotFoundException",
+    "exception": "NotFoundException",
     "message": "根据相关法律法规和政策，部分搜索结果未予显示。",
     "path": "/api/messages/64"
 }
@@ -524,6 +527,45 @@ hello
 
 
 ## beyond Moco
+
+```json
+[
+    {
+        "id": "product-id-1",
+        "createdBy": {
+            "id": "user-id-qixi",
+            "username": "qixi",
+            "authorities": [
+                "ADMIN"
+            ]
+        }
+    },
+    {
+        "id": "product-id-2",
+        "createdBy": {
+            "id": "user-id-qixi",
+            "username": "qixi",
+            "authorities": [
+                "ADMIN"
+            ]
+        }
+    }
+]
+```
+
+
+```javascript
+return [
+    {
+        "id": "product-id-1",
+        "createdBy": users['user-id-qixi']
+    },
+    {
+        "id": "product-id-2",
+        "createdBy": users['user-id-qixi']
+    }
+];
+```
 
 
 
