@@ -1,4 +1,4 @@
-# Contract by example
+# Contract By Example
 
 Qi Xi / Macdao
 
@@ -87,13 +87,17 @@ from ThoughtWorks
 └──────────────────────┘         └────────────────────────┘
 ```
 
-Note: SEO?
 
-
-### Requirements
+### Collaboration
 
 
 #### 1. Contracts
+
+```
+┌──────────┐      ┌───────────┐      ┌─────────┐
+│ Frontend │ <──> │ Contracts │ <──> │ Backend │
+└──────────┘      └───────────┘      └─────────┘
+```
 
 
 #### 2. Mock server for frontend
@@ -124,7 +128,7 @@ Note: SEO?
 ```
 
 
-#### 4. Changes should break build
+#### 4. Evolution Support
 
 
 
@@ -136,6 +140,8 @@ Note: SEO?
 
 ![pact](https://raw.githubusercontent.com/realestate-com-au/pact/master/documentation/pact_two_parts.png)
 
+
+#### 1. Contracts
 
 ```ruby
     before do
@@ -150,12 +156,9 @@ Note: SEO?
 ```
 
 
-### Requirements
-
-1. Contracts
-2. Mock server for frontend
-3. Verify backend
-4. Changes should break build
+### 2. Mock server for frontend
+### 3. Verify backend
+### 4. Evolution Support
 
 
 ```
@@ -170,6 +173,8 @@ Note: SEO?
 ![Bounded Context](https://martinfowler.com/bliki/images/boundedContext/sketch.png)
 
 
+### BFF - Backend for frontends
+
 ```
 ┌─────┐  contracts   ┌─────┐  contracts   ┌──────────────┐
 │ Web │ ───────────> │ BFF │ ───────────> │ RESTful APIs │
@@ -181,52 +186,40 @@ Note: SEO?
 ## Provider Contracts
 
 
-### 1. Contracts
+### RAML
 
-```json
-{
-    "description": "anonymous_can_get_alligator",
-    "request": {
-        "method": "GET",
-        "uri": "/alligator"
-    },
-    "response": {
-        "status": 200,
-        "headers": {
-            "content-type": "application/json"
-        },
-        "json": {
-            "name": "Betty"
-        }
-    }
-}
+```yaml
+/songs:
+  description: Collection of available songs in Jukebox
+  get:
+    description: Get a list of songs based on the song title.
+    queryParameters:
+      songTitle:
+        description: "The title of the song to search (it is case insensitive and doesn't need to match the whole title)"
+        required: true
+        minLength: 3
+        type: string
+        example: "Get L"
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                [
+                  {
+                    "songId": "550e8400-e29b-41d4-a716-446655440000",
+                    "songTitle": "Get Lucky"
+                  },
+                  {
+                    "songId": "550e8400-e29b-41d4-a716-446655440111",
+                    "songTitle": "Loose yourself to dance"
+                  },
+                  {
+                    "songId": "550e8400-e29b-41d4-a716-446655440222",
+                    "songTitle": "Gio sorgio by Moroder"
+                  }
+                ]
 ```
-
-
-### 2. Mock server for frontend
-
-![Moco](https://raw.githubusercontent.com/dreamhead/moco/master/moco-doc/DukeChoice-960x90-lm.png)
-
-```sh
-./moco http -p 12306 -g api.json
-```
-
-
-### moscow
-
-```java
-public class AlligatorApiTest extends ApiTestBase {
-    @Test
-    public void anonymous_can_get_alligator() throws Exception {
-        assertContract();
-    }
-}
-```
-
-
-- raml
-- swagger http://greengerong.com/blog/2015/07/29/swagger-qian-hou-duan-fen-chi-hou-de-qi-yue/
-- API Blueprint
 
 
 
@@ -269,6 +262,142 @@ SELECT 1 + 1;
 One of the great things about specification by example is that examples are usually much easier to come up with, particularly for the non-nerds who we write the software for.
 
 -- Martin Fowler
+
+
+
+## Contract By Example
+
+
+### 1. Contracts
+
+```json
+{
+    "description": "anonymous_can_get_alligator",
+    "request": {
+        "method": "GET",
+        "uri": "/alligator"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "content-type": "application/json"
+        },
+        "json": {
+            "name": "Betty"
+        }
+    }
+}
+```
+
+
+### 2. Mock server for frontend
+
+<https://github.com/dreamhead/moco>
+
+![Moco](https://raw.githubusercontent.com/dreamhead/moco/master/moco-doc/DukeChoice-960x90-lm.png)
+
+```sh
+./moco http -p 12306 -g api.json
+```
+
+
+### 3. Verify backend
+
+<https://github.com/macdao/moscow>
+
+```java
+public class AlligatorApiTest extends ApiTestBase {
+    @Test
+    public void anonymous_can_get_alligator() throws Exception {
+        assertContract();
+    }
+}
+```
+
+
+### 4. Evolution Support
+
+
+
+## Moscow
+
+
+### `ApiTestBase`
+
+```java
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@WebIntegrationTest("server.port:0")
+public abstract class ApiTestBase {
+    private static final ContractContainer container = new ContractContainer(Paths.get("src/test/resources/contracts"));
+    @Rule
+    public final TestName name = new TestName();
+    @Value("${local.server.port}")
+    protected int port;
+
+    protected Map<String, String> assertContract() {
+        return assertContract(name.getMethodName());
+    }
+
+    protected Map<String, String> assertContract(String description) {
+        return new ContractAssertion(container.findContracts(description))
+                .setPort(port)
+                .setExecutionTimeout(200)
+                .assertContract();
+    }
+}
+```
+
+
+### cleaning
+
+```java
+    @Autowired
+    private Flyway flyway;
+
+    @Before
+    public void setUp() throws Exception {
+        flyway.clean();
+        flyway.migrate();
+    }
+```
+
+
+### Necessity Mode
+
+```json
+{
+    "description": "anonymous_cannot_get_non_existent_message",
+    "request": {
+        "uri": "/api/messages/64"
+    },
+    "response": {
+        "status": 404,
+        "json": {
+            "message": "64 is a magic number."
+        }
+    }
+}
+```
+
+```json
+{
+    "timestamp": "612889200000",
+    "status": 404,
+    "error": "Tiananmen Square protests of 1989",
+    "exception": "NotFoundException",
+    "message": "64 is a magic number.",
+    "path": "/api/messages/64"
+}
+```
+
+```java
+new ContractAssertion(container.findContracts(description))
+                .setPort(port)
+                .setExecutionTimeout(executionTimeout())
+                .setNecessity(necessity)
+                .assertContract();
+```
 
 
 
