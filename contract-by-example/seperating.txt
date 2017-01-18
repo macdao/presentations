@@ -1,0 +1,1 @@
+[ Browser ( Frontend ) ] - Ajax -> [ RESTful APIs (Backend) ]
