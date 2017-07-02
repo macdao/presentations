@@ -1,6 +1,6 @@
 # Contract By Example
 
-Qi Xi / Macdao
+祁兮
 
 from ThoughtWorks
 
@@ -169,7 +169,6 @@ from ThoughtWorks
 ```
 
 
-<!-- .slide: data-background="white" -->
 ![Bounded Context](https://martinfowler.com/bliki/images/boundedContext/sketch.png)
 
 
@@ -401,6 +400,48 @@ new ContractAssertion(container.findContracts(description))
 
 
 
+## Unit test, or API test, that is the question
+
+
+- ProductController
+
+```java
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+    @RequestMapping(method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
+    public Page<Product> getAllProducts(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        return productService.findAll(toPageable(page, size));
+    }
+}
+```
+
+- ProductService
+
+```java
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+```
+
+- ProductRepository
+
+```java
+interface ProductRepository extends JpaRepository<Product, String> {
+}
+```
+
+
+### Test Pyramid
+
+![Test Pyramid](contract-test/test-pyramid.png)
+
+
+![](contract-by-example/summary.png)
+
+
+
 ## References
 
 - http://martinfowler.com/bliki/SpecificationByExample.html
@@ -408,3 +449,4 @@ new ContractAssertion(container.findContracts(description))
 - https://www.martinfowler.com/articles/consumerDrivenContracts.html
 - https://github.com/macdao/moscow
 - https://github.com/realestate-com-au/pact
+- https://martinfowler.com/articles/microservice-testing
