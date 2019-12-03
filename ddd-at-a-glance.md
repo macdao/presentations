@@ -138,4 +138,6 @@ Note: 领域事件
 
 - 事件风暴
 
+![](ddd-at-a-glance/event-storming.jpg)
+
 Note: 事件风暴
