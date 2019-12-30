@@ -137,6 +137,7 @@ Note: 事件风暴
 
 ## 架构
 
+
 - 分层架构 - 2003
 
 ![](ddd-at-a-glance/ddd_layers.png)
