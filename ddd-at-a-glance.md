@@ -99,6 +99,7 @@ Note: 限界上下文
 - 模式：高亮核心
 - 模式：内聚机制
 - 模式：分离核心
+- 模式：抽象核心
 
 
 
@@ -106,16 +107,6 @@ Note: 限界上下文
 
 
 - 问题域和解决方案域
-
-
-- 端口和适配器架构/六边形架构
-
-![](ddd-at-a-glance/hexagonal.gif)
-
-
-![](ddd-at-a-glance/ports-and-adapters.png)
-
-Note: 六边形架构
 
 
 - 子域：
@@ -141,3 +132,38 @@ Note: 领域事件
 ![](ddd-at-a-glance/event-storming.jpg)
 
 Note: 事件风暴
+
+
+
+## 架构
+
+- 分层架构 - 2003
+
+![](ddd-at-a-glance/ddd_layers.png)
+
+
+- 端口和适配器架构/六边形架构 - 2005
+
+![](ddd-at-a-glance/hexagonal.gif)
+
+>  让用户、程序、自动化测试和批处理脚本可以平等地驱动应用，让应用的开发和测试可以独立于其最终运行的设备和数据库。
+
+
+![](ddd-at-a-glance/ports-and-adapters.png)
+
+Note: 六边形架构
+
+
+- 洋葱架构 - 2008
+
+![](ddd-at-a-glance/onion.webp)
+
+
+- 整洁架构 - 2012
+
+![](ddd-at-a-glance/CleanArchitecture.jpg)
+
+
+- 清晰架构 - 2017
+
+![](ddd-at-a-glance/explicit-architechture.png)
