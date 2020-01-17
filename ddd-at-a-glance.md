@@ -165,6 +165,11 @@ Note: 六边形架构
 ![](ddd-at-a-glance/CleanArchitecture.jpg)
 
 
+- 六边形架构（IDDD） - 2013
+
+![](ddd-at-a-glance/hexagonal-iddd.png)
+
+
 - 清晰架构 - 2017
 
 ![](ddd-at-a-glance/explicit-architechture.png)
