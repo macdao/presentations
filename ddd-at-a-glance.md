@@ -138,12 +138,12 @@ Note: 事件风暴
 ## 架构
 
 
-- 分层架构 - 2003
+- [分层架构](https://book.douban.com/subject/26819666/) - 2003
 
 ![](ddd-at-a-glance/ddd_layers.png)
 
 
-- 端口和适配器架构/六边形架构 - 2005
+- [端口和适配器架构/六边形架构](https://web.archive.org/web/20180822100852/http://alistair.cockburn.us/Hexagonal+architecture) - 2005
 
 ![](ddd-at-a-glance/hexagonal.gif)
 
@@ -152,24 +152,26 @@ Note: 事件风暴
 
 ![](ddd-at-a-glance/ports-and-adapters.png)
 
+[Ports-And-Adapters / Hexagonal Architecture](http://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
+
 Note: 六边形架构
 
 
-- 洋葱架构 - 2008
+- [洋葱架构](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/) - 2008
 
 ![](ddd-at-a-glance/onion.webp)
 
 
-- 整洁架构 - 2012
+- [整洁架构](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - 2012
 
 ![](ddd-at-a-glance/CleanArchitecture.jpg)
 
 
-- 六边形架构（IDDD） - 2013
+- [六边形架构（IDDD）](https://book.douban.com/subject/25844633/) - 2013
 
 ![](ddd-at-a-glance/hexagonal-iddd.png)
 
 
-- 清晰架构 - 2017
+- [清晰架构](https://www.jianshu.com/p/d3e8b9ac097b) - 2017
 
 ![](ddd-at-a-glance/explicit-architechture.png)
